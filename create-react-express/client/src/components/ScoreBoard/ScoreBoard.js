@@ -3,38 +3,31 @@ import "./score.css";
 const scoreboard = props => (
 
 
-	<div>
-		<nav id="heading" className="navbar navbar-inverse">
-
-			<div className = "row">
-
-				<div className= "col-md-1"></div>	
-
-				<div className= "col-md-3">		 
-				   <h2 id="title">CLICKY GAME</h2>
-				</div>
-
-				<div className= "col-md-1"></div>
-
-				<div className= "col-md-3">		
-				   <h2 id = "intro">Click an image to begin</h2>
-				</div>
-
-				<div className= "col-md-1"></div>
-
-				<div className= "col-md-3">		
-				   <h2 id = "props">{props.score} {props.topScore} </h2>
-			</div>
-
-		</div>
-	</nav>
-
+<div>
+		
 	<div id="jumbo" className="jumbotron">
-	  <h2 style={{textAlign:"center"}}>CLICKY GAME</h2>
-	  <p style={{textAlign:"center"}}>Click on an image to earn points, but don't click on any more than once!</p>
+	  <h2 style={{textAlign:"center"}}>SHOPTASTIFY</h2>
+	  <p style={{textAlign:"center"}}>Find the best deals!!</p>
 	</div>
 
+
+		<div className = "row">
+			<div className = "col-md-4"></div>
+			<div class="col-lg-5">
+			    <div class="input-group">
+			      <input type="text" class="form-control" placeholder="Search for..."></input>
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="button">Go!</button>
+			      </span>
+				</div>
+			</div>
+		</div>
 </div>
+
+	
+
+	
+
 
     
 );
