@@ -1,4 +1,6 @@
 import React from "react";
+import {ItemList} from "./ItemList";
+import {ItemListItem} from "./ItemListItem" ; 
 import "./score.css";
 
 
@@ -7,33 +9,18 @@ import "./score.css";
 	var sem3 = require('semantics3-node')(api_key,api_secret);
 
 
+
 	class scoreBoard extends React.Component {
 
-		state = {
-			queryString:""
+	constructor(){
+		super();
+		this.state = {
+			queryString:"",
+			items:[]
 		}
+	}
 
-		results = (userInput) => {
-
-			console.log(userInput)
-
-			return new Promise((resolve, reject) => {
-
-				sem3.products.products_field( "search", userInput );
-
-				sem3.products.get_products(
-				   function(err, products) {
-				      if (err) {
-				         console.log("Couldn't execute request: get_products");
-				         return;
-				      }
-				      console.log(JSON.parse(products).results) ;
-
-				      resolve(JSON.parse(products).results)
-				   }
-				);
-			})
-		}
+		
 	  handleInputChange = event => {
 	    // Destructure the name and value properties off of event.target
 	    // Update the appropriate state
@@ -58,17 +45,25 @@ import "./score.css";
 	    	.then(response => {
 	    		response.text().then(responseText => {
 	    			// call setState with new array
+	    			// console.log(JSON.parse(responseText));
+	    			var data = JSON.parse(responseText)
+	    			this.setState({items:data})
+	    			// console.log(this.state.items[0].name)
 
-	    			console.log(JSON.parse(responseText));
 	    		})
 	    	})
 	    // this.results(this.state.queryString)
 	    // 	.then(console.log)
 
 	  };
+
+
 	  // below form create a wrapper component that allows iteration of state array
 	  	// each item is passed to a component via props 
 		render(){
+			const { items } = this.state,
+				  toDisplay = items.length > 0 ? items : "Perform A Search!"
+			
 			return(
 
 			<div>	
@@ -89,6 +84,35 @@ import "./score.css";
 					</form>
 				</div>
 			</div>
+
+			<div className = "data">
+
+				<ItemList>
+
+					{Array.isArray(toDisplay) ? items.map(item =>{
+
+					return(
+
+					
+						<ItemListItem
+
+						
+							key = {item.name}
+							image = {item.images[0]}
+							name = {item.name}
+							price = {item.price}
+
+						/>
+					)
+					}) : toDisplay}
+
+
+				</ItemList>
+			
+
+			</div>
+
+
 		</div>
 
 

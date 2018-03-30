@@ -19,3 +19,10 @@
 	background-color: #FA8072;	
 }
 
+.list-group{
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+}

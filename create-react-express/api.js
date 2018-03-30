@@ -8,6 +8,8 @@ const results = (userInput) => {
 
 			return new Promise((resolve, reject) => {
 
+				
+
 				sem3.products.products_field( "search", userInput );
 
 				sem3.products.get_products(
