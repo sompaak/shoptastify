@@ -8,9 +8,7 @@ const results = (userInput) => {
 
 			return new Promise((resolve, reject) => {
 
-				
-
-				sem3.products.products_field( "search", userInput );
+				sem3.products.products_field( "search", userInput);
 
 				sem3.products.get_products(
 				   function(err, products) {
@@ -22,7 +20,7 @@ const results = (userInput) => {
 				      // format data with only relevant info
 				      resolve(JSON.parse(products).results)
 				   }
-				);
+				)
 			})
 		}
 module.exports = results

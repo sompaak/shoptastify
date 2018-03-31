@@ -48,7 +48,7 @@ import "./score.css";
 	    			// console.log(JSON.parse(responseText));
 	    			var data = JSON.parse(responseText)
 	    			this.setState({items:data})
-	    			// console.log(this.state.items[0].name)
+	    			 console.log(this.state.items[1])
 
 	    		})
 	    	})
@@ -96,11 +96,13 @@ import "./score.css";
 					
 						<ItemListItem
 
-						
+							url = {item.sitedetails[0].url}
 							key = {item.name}
 							image = {item.images[0]}
 							name = {item.name}
 							price = {item.price}
+							site = {item.sitedetails[0].url}
+							links = {item.sitedetails.url}
 
 						/>
 					)
@@ -108,7 +110,8 @@ import "./score.css";
 
 
 				</ItemList>
-			
+					
+					<p>{items.name}</p>
 
 			</div>
 
