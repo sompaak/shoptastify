@@ -1,4 +1,4 @@
-#heading{
+o#heading{
 	background-color:#6A5ACD;
 }
 
@@ -25,4 +25,7 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 
+}
+body{
+	background-color:	#FFE4B5;
 }
