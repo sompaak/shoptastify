@@ -23,4 +23,21 @@ const results = (userInput) => {
 				)
 			})
 		}
-module.exports = results
+
+
+const idResults = (productId,resolve, reject) =>{
+	console.log("in func==============")
+	sem3.products.products_field( "sem3_id", productId);
+	sem3.products.get_products(
+	   function(err, offers) {
+	      if (err) {
+	         console.log("Couldn't execute request: get_offers");
+	         reject(err);
+	      }
+	    // console.log( "Results of request:\n", JSON.stringify(offers));
+	    resolve(JSON.stringify(offers))
+	   }
+	);
+}
+
+module.exports = {results, idResults}

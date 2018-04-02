@@ -3,10 +3,10 @@ import React from "react";
 
 export const ItemListItem = props => (
   
-    <li>
-       <div className="card" >
+    
+       <div className="card" style = {{width:"400px",height:"700px"}} >
           <a href = {props.url}>
-             <img className="" style = {{height:"400px", width:"400px"}} src={props.image} alt="Card image cap">
+             <img className="" style = {{height:"300px", width:"300px"}} src={props.image} alt="Card image cap">
             </img>
           </a>
         <div className="card-body">
@@ -21,11 +21,11 @@ export const ItemListItem = props => (
             <p>{props.links}</p>
 
           </p>
-          <button onClick={props.handleItemSubmit.bind(null,props.sem3id)} className="btn btn-primary">Go somewhere</button>
+          <button onClick={props.handleItemSubmit.bind(null,props.semid)} className="btn btn-primary">Go somewhere</button>
         </div>
       </div>
       
-  </li>
+  
  
 );
 

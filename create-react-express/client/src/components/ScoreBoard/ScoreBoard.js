@@ -2,7 +2,7 @@ import React from "react";
 import {ItemList} from "./ItemList";
 import {ItemListItem} from "./ItemListItem" ; 
 import "./score.css";
-
+import { Link } from 'react-router-dom'
 
 var api_key = 'SEM3D3471CFBEE1D946B7A186B012CB94542';
 var api_secret = 'OGY5NWZkOTNlZWI1OGNmZjY0MGMwODkxZWYzMjUyZDA';
@@ -40,11 +40,21 @@ class scoreBoard extends React.Component {
 		})
 			.then(response => {
 				response.text().then(responseText => {
+					console.log(responseText)
 					var data = JSON.parse(responseText)
+
 					this.setState({items:data})
 				})
 			})
 	};
+	handleRouteCheck = () => {
+		fetch("/getIds", {method: "GET"})
+			.then(response => {
+				response.text().then(responseText => {
+					console.log("server response", responseText)
+				})
+			})
+	}
 
 	itemSubmit = itemId => {
 		console.log(itemId)
@@ -68,7 +78,13 @@ class scoreBoard extends React.Component {
 		<div id="jumbo" className="jumbotron">
 		  <h2 style={{textAlign:"center"}}>SHOPTASTIFY</h2>
 		  <p style={{textAlign:"center"}}>Find the best deals!!</p>
+		  <button className="btn btn-danger"><Link to="/saved">saved</Link></button>
 		</div>
+
+
+
+
+
 		<div className = "row">
 			<div className = "col-md-4"></div>
 			<div className="col-lg-5">
@@ -95,7 +111,7 @@ class scoreBoard extends React.Component {
 						name = {item.name}
 						price = {item.price}
 						site = {item.sitedetails[0].url}
-						sem3id = {item.sem3_id}
+						semid = {item.sem3_id}
 						handleItemSubmit = {this.itemSubmit}
 					/>
 				)
@@ -103,6 +119,7 @@ class scoreBoard extends React.Component {
 
 			</ItemList>
 		</div>
+		<button onClick={this.handleRouteCheck.bind(this)}></button>
 	</div>
 		)
 	}
