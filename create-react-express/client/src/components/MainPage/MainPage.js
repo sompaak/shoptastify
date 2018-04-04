@@ -8,9 +8,7 @@ var api_key = 'SEM3D3471CFBEE1D946B7A186B012CB94542';
 var api_secret = 'OGY5NWZkOTNlZWI1OGNmZjY0MGMwODkxZWYzMjUyZDA';
 var sem3 = require('semantics3-node')(api_key,api_secret);
 
-
-
-class scoreBoard extends React.Component {
+class MainPage extends React.Component {
 
 	constructor(){
 		super();
@@ -23,6 +21,7 @@ class scoreBoard extends React.Component {
 	handleInputChange = event => {
 		// Destructure the name and value properties off of event.target
 		// Update the appropriate state
+		console.log(this.state.queryString)
 		const { name, value } = event.target;
 		this.setState({
 		  [name]: value
@@ -32,7 +31,6 @@ class scoreBoard extends React.Component {
 	handleFormSubmit = event => {
 		// When the form is submitted, prevent its default behavior, get recipes update the recipes state
 		event.preventDefault();
-
 		fetch("/api", {
 			method:"POST", 
 			body: JSON.stringify({message: this.state.queryString}),
@@ -40,21 +38,11 @@ class scoreBoard extends React.Component {
 		})
 			.then(response => {
 				response.text().then(responseText => {
-					console.log(responseText)
 					var data = JSON.parse(responseText)
-
 					this.setState({items:data})
 				})
 			})
 	};
-	handleRouteCheck = () => {
-		fetch("/getIds", {method: "GET"})
-			.then(response => {
-				response.text().then(responseText => {
-					console.log("server response", responseText)
-				})
-			})
-	}
 
 	itemSubmit = itemId => {
 		console.log(itemId)
@@ -81,16 +69,12 @@ class scoreBoard extends React.Component {
 		  <button className="btn btn-danger"><Link to="/saved">saved</Link></button>
 		</div>
 
-
-
-
-
 		<div className = "row">
 			<div className = "col-md-4"></div>
 			<div className="col-lg-5">
 				<form>
 				    <div className="input-group">
-				      <input name = "queryString" value = {this.state.queryString}  onChange = {this.handleInputChange} type="text" className="form-control" placeholder="Search for..."></input>
+				      <input name = "queryString" value = {this.state.queryString} onChange = {this.handleInputChange} type="text" className="form-control" placeholder="Search for..."></input>
 				      <span className="input-group-btn">
 				        <button onClick = {this.handleFormSubmit} className="btn btn-default" type="submit">Go!</button>
 				      </span>
@@ -118,11 +102,10 @@ class scoreBoard extends React.Component {
 				}) : toDisplay}
 
 			</ItemList>
-		</div>
-		<button onClick={this.handleRouteCheck.bind(this)}></button>
+		</div>		
 	</div>
 		)
 	}
 }
 
-export default scoreBoard; 
+export default MainPage; 
