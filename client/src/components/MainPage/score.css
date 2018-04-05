@@ -1,0 +1,38 @@
+#heading{
+	background-color:#6A5ACD;
+}
+
+#props{
+	color: white;
+	
+}
+
+#intro{
+	color: white;
+}
+
+#title{
+	color: white;
+}
+
+#jumbo{
+	background-color: #FA8072;	
+}
+
+.list-group{
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	
+
+}
+body{
+	background-color:	#FFE4B5;
+}
+
+
+#hi{
+	display: flex;
+	flex-direction: column;
+}
