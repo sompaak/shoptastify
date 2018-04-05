@@ -13,7 +13,8 @@ if (process.env.NODE_ENV === "production") {
 
 
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/shoptastify");
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/shoptastify";
+mongoose.connect(MONGODB_URI);
 // Send every request to the React app
 // Define any API routes before this runs
 
